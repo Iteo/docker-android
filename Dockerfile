@@ -20,6 +20,7 @@ RUN     dpkg --add-architecture i386 \
                 lib32gcc1 \
                 lib32ncurses5 \
                 lib32z1 \
+                file \
             && apt-get clean \
             && rm -rf /var/lib/apt/lists/*
 
@@ -42,3 +43,14 @@ RUN     mkdir -p /root/.android \
             && touch /root/.android/repositories.cfg \
             && sdkmanager --update \
             && sdkmanager --package_file=${ANDROID_HOME}/packages.txt --verbose
+
+# Copy install tools
+COPY tools /opt/tools
+RUN chmod +x /opt/tools/android-start-emulator.sh /opt/tools/android-wait-for-emulator.sh
+
+ENV PATH ${PATH}:/opt/tools
+
+# use 64bit bash for emulator
+ENV SHELL /bin/bash 
+
+RUN     avdmanager create avd -n api25 -k "system-images;android-25;google_apis;x86_64" -c 1000M --device "Nexus 5X"

@@ -22,3 +22,5 @@ platforms;android-18
 platforms;android-17
 extras;android;m2repository
 extras;google;m2repository
+emulator
+system-images;android-25;google_apis;x86_64
