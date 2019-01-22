@@ -33,15 +33,15 @@ RUN     wget https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_
             && chmod +x ${ANDROID_HOME}/tools/bin/sdkmanager
 
 # Accept licenses before installing components
-RUN yes | sdkmanager --licenses
+RUN     yes | sdkmanager --licenses
 
-RUN sdkmanager "emulator" "tools" "platform-tools"
+RUN     sdkmanager "emulator" "tools" "platform-tools"
 
 ## Install packages
 RUN     mkdir -p /root/.android \
             && touch /root/.android/repositories.cfg \
             && sdkmanager --update \
-            && sdkmanager \
+            && yes | sdkmanager \
 		        "build-tools;28.0.3" \
                 "build-tools;27.0.3" \
                 "build-tools;27.0.2" \
