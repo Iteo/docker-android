@@ -42,7 +42,7 @@ RUN     mkdir -p /root/.android \
             && touch /root/.android/repositories.cfg \
             && sdkmanager --update \
             && sdkmanager \
-		"build-tools;28.0.3" \
+		        "build-tools;28.0.3" \
                 "build-tools;27.0.3" \
                 "build-tools;27.0.2" \
                 "build-tools;27.0.1" \
@@ -55,7 +55,7 @@ RUN     mkdir -p /root/.android \
                 "build-tools;23.0.3" \
                 "build-tools;22.0.1" \
                 "platform-tools" \
-		"platforms;android-28 \
+                "platforms;android-28" \
                 "platforms;android-27" \
                 "platforms;android-26" \
                 "platforms;android-25" \
